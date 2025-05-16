@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="dashboard-stats">
+    <ul>
+        <li><strong>Nombre total d'utilisateurs :</strong> {{ stats.total_users }}</li>
+        <li><strong>Nombre total de réservations :</strong> {{ stats.total_reservations }}</li>
+        <li><strong>Nombre total de notifications :</strong> {{ stats.total_notifications }}</li>
+        <li><strong>Nombre total d'avis :</strong> {{ stats.total_avis }}</li>
+        <li><strong>Nombre total de plats :</strong> {{ stats.total_plats }}</li>
+    </ul>
+</div>
+{% endblock %}

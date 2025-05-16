@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Historique des Réservations</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 1.2cm 1.2cm 2cm 1.2cm;
+            background-color: #f5f5f5;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid #ddd;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .user-info {
+            margin: 20px 0;
+            padding: 10px;
+            background: #f8f9fa;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 30px;
+        }
+        
+        .info-box .info-item {
+            margin: 2px 0;
+            min-width: 45%;
+            flex: 1 0 45%;
+        }
+        
+        .info-item {
+            margin: 5px 0;
+            font-size: 9.5pt;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #7f8c8d;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 10px 0 15px 0;
+            page-break-inside: auto;
+            font-size: 8pt;
+            table-layout: fixed;
+        }
+        
+        thead {
+            display: table-header-group;
+        }
+        
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+        
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+            font-size: 8pt;
+            padding: 6px 8px;
+            text-align: left;
+            border: 1px solid #2c3e50;
+            vertical-align: middle;
+        }
+        
+        td { 
+            border: 1px solid #e0e0e0; 
+            padding: 6px 8px; 
+            vertical-align: top;
+            font-size: 8pt;
+            word-wrap: break-word;
+        }
+        
+        .reservation-date {
+            white-space: nowrap;
+            color: #7f8c8d;
+            font-size: 8pt;
+        }
+        
+        .plat-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 2px;
+            font-size: 8.5pt;
+        }
+        
+        .plat-description {
+            color: #7f8c8d;
+            font-size: 7.5pt;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+        
+        .status { 
+            padding: 2px 6px; 
+            border-radius: 8px; 
+            font-weight: 600;
+            font-size: 7pt;
+            display: inline-block;
+            min-width: 65px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        
+        .en_attente { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .accepte { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .refuse { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .annule { background-color: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
+        
+        .price-cell {
+            text-align: right;
+            white-space: nowrap;
+            font-size: 8pt;
+            padding: 5px 8px;
+        }
+        
+        .base-price {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .supplements {
+            margin-top: 6px;
+        }
+        
+        .supplements-title {
+            font-size: 7.5pt;
+            color: #7f8c8d;
+            margin: 3px 0 2px 0;
+        }
+        
+        .supplement-item {
+            font-size: 7.5pt;
+            color: #555;
+            margin-bottom: 1px;
+            display: flex;
+            justify-content: space-between;
+            line-height: 1.2;
+        }
+        
+        .supplement-name {
+            flex: 1;
+        }
+        
+        .supplement-price {
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        
+        .total-row {
+            font-weight: 600;
+            background-color: #f8f9fa;
+        }
+        
+        .grand-total {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: right;
+            margin: 10px 0 15px 0;
+            padding: 8px 12px;
+            background-color: #f1f8fe;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer { 
+            position: fixed;
+            bottom: 0;
+            left: 1.2cm;
+            right: 1.2cm;
+            margin: 0;
+            padding: 6px 0 4px 0;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 7pt;
+            color: #95a5a6;
+            background: white;
+            z-index: 2;
+        }
+        
+        .logo {
+            max-width: 120px;
+            margin-bottom: 5px;
+        }
+        
+        /* Optimisation pour l'impression */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+            table {
+                page-break-inside: auto;
+            }
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            thead {
+                display: table-header-group;
+            }
+            tfoot {
+                display: table-footer-group;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Historique des Réservations</h1>
+        </div>
+
+        <div class="user-info">
+            <p><strong>Utilisateur Fidele:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Plat Date</th>
+                    <th>Plat</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.date_reservation|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        <strong>{{ reservation.plat.nom_plat }}</strong><br>
+                        <small>{{ reservation.plat.description|default:"" }}</small>
+                        {% if reservation.supplements %}
+                            <div class="supplements">
+                                <strong>Suppléments:</strong>
+                                <ul>
+                                    {% for sup in reservation.supplements %}
+                                        <li>{{ sup.nom }} ({{ sup.prix }} FCFA)</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>{{ reservation.quantite }}</td>
+                    <td>
+                        <span class="status {{ reservation.statut|lower }}">
+                            {{ reservation.get_statut_display }}
+                        </span>
+                    </td>
+                    <td class="price">
+                        {{ reservation.plat.prix|floatformat:2 }} FCFA
+                        {% if reservation.supplements %}
+                            <br><small>+ {{ reservation.get_supplements_total|floatformat:2 }} FCFA supp.</small>
+                            <br><strong>Total: {{ reservation.get_total_prix|floatformat:2 }} FCFA</strong>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <div class="total">
+                <strong>Total général: {{ total_general|floatformat:2 }} FCFA</strong>
+            </div>
+            <p>Généré automatiquement par le système de gestion de cantine</p>
+        </div>
+    </div>
+</body>
+</html>
