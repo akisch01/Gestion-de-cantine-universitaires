@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const baseURL = import.meta.env.VITE_API_URL || 'https://gestion-cantine-backend.onrender.com/api';
 
 // Fonction utilitaire pour vérifier et nettoyer le token
 const cleanToken = (token: string | null): string | null => {
