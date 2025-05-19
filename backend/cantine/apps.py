@@ -18,7 +18,7 @@ def create_default_parameters(**kwargs):
 
 class CantineConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'backend.cantine'  # Le chemin complet du module
+    name = 'cantine'  # Le chemin complet du module
     verbose_name = 'Gestion de Cantine'
 
     def ready(self):
