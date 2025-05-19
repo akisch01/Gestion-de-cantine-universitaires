@@ -23,7 +23,7 @@ from .serializers import (
     EmploiDuTempsSerializer, AvisSerializer, NotificationSerializer,
     ParametreSerializer, UserInfoSerializer
 )
-from backend.cantine import serializers
+from cantine import serializers
 
 logger = logging.getLogger(__name__)
 User = get_user_model()
