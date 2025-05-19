@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'backend.cantine',
+    'cantine',
     'rest_framework_simplejwt',
     'channels',
     'drf_spectacular',
