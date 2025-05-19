@@ -43,7 +43,7 @@ apiClient.interceptors.response.use(
             const newToken = await refreshToken();
             if (newToken) {
               localStorage.setItem(JWT_STORAGE_KEY, JSON.stringify(newToken));
-              error.config.headers.Authorization = `Bearer ${cleanToken(newToken)}`;
+              error.config.headers.Authorization = `Bearer ${cleanToken(newToken.access)}`;
               return apiClient.request(error.config); // Réessayer la requête originale
             }
           } catch (refreshError) {
