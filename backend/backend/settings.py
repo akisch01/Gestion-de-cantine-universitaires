@@ -13,6 +13,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'gestion-cantine-backend.onrender.com',
+    'cantine-universitaire.onrender.com',
     'localhost',
     '127.0.0.1',
 ]
