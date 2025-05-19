@@ -15,7 +15,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(BASE_DIR))  # Ajoute la racine du projet au PYTHONPATH
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
 # Import Django en premier
 from django.core.asgi import get_asgi_application
