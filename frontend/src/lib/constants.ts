@@ -1,12 +1,12 @@
 // Configuration de l'API
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+export const API_URL = import.meta.env.VITE_API_URL || "https://gestion-cantine-backend.onrender.com";
 
 // Configuration de l'authentification
 export const JWT_STORAGE_KEY = "token";
 export const USER_ROLE_KEY = "user_role";
 
 // Constantes globales de l'application
-export const WEBSOCKET_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000/ws/notifications/";
+export const WEBSOCKET_URL = import.meta.env.VITE_WS_URL || "ws://gestion-cantine-backend.onrender.com/ws/notifications/";
 export const NOTIF_STORAGE_KEY = "cantine_notifications";
 
 // Endpoints API
