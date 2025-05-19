@@ -23,12 +23,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://gestion-cantine-backend.onrender.com',
         changeOrigin: true,
         secure: false,
       },
       '/media': {
-        target: 'http://localhost:8000',
+        target: 'https://gestion-cantine-backend.onrender.com',
         changeOrigin: true,
       },
     },
