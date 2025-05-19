@@ -117,7 +117,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "https://cantine-universitaire.onrender.com",
-    "http://localhost:5173"  # Pour le développement local
+    "http://localhost:3000"  # Pour le développement local
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
