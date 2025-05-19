@@ -11,7 +11,7 @@ import os
 import sys
 from pathlib import Path
 
-# Ajoutez ceci pour inclure le répertoire parent dans le PYTHONPATH
+# Ajoutez le chemin du projet au PYTHONPATH
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
