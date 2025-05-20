@@ -5,7 +5,7 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "public"
+        "distDir": "dist"
       }
     }
   ],
@@ -15,9 +15,13 @@
       "dest": "https://gestion-cantine-backend.onrender.com/api/$1"
     },
     {
+      "src": "/media/(.*)",
+      "dest": "https://gestion-cantine-backend.onrender.com/media/$1"
+    },
+    {
       "src": "/assets/(.*)",
       "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
+        "Cache-Control": "public, max-age=31536000"
       }
     },
     {
