@@ -2,22 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
+      "src": "vite.config.ts",
+      "use": "@vercel/vite",
       "config": {
-        "distDir": "dist",
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "npm run build"  // ← Appelle directement votre script build
+        "installCommand": "npm install --legacy-peer-deps"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/$1",
-      "headers": {
-        "Cache-Control": "s-maxage=0"
-      }
+      "dest": "/$1"
     }
   ]
 }
