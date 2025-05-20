@@ -5,16 +5,16 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist", // Correspond au dossier de sortie par défaut de Vite
+        "distDir": "dist",
         "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "npm run build"
+        "buildCommand": "npm run build"  // ← Appelle directement votre script build
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/",
+      "dest": "/dist/$1",
       "headers": {
         "Cache-Control": "s-maxage=0"
       }
