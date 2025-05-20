@@ -4,14 +4,14 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Changement CRITIQUE ici
+  base: '/',
   build: {
-    outDir: '../public', // Nouveau dossier à la racine
+    outDir: '../dist',  // Build à la racine du projet
     emptyOutDir: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
         assetFileNames: 'assets/[name].[ext]'
       }
     }
