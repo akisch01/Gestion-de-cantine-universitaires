@@ -8,7 +8,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "vercel-build": "chmod +x vercel-build.sh && ./vercel-build.sh",
     "postinstall": "patch-package"
   },
   },
