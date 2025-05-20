@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Afficher les versions
+cd frontend
 echo "Node.js version: $(node -v)"
 echo "npm version: $(npm -v)"
 
