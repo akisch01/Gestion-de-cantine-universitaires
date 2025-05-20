@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -15,22 +14,29 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [
-        tailwindcss,
-        autoprefixer,
+        tailwindcss(),
+        autoprefixer(),
       ],
     },
   },
+  build: {
+    outDir: 'dist', // Explicitement défini
+    emptyOutDir: true // Vide le dossier avant chaque build
+  },
+  // Configuration spécifique pour Vercel
   server: {
     proxy: {
       '/api': {
         target: 'https://gestion-cantine-backend.onrender.com',
         changeOrigin: true,
         secure: false,
+        rewrite: path => path.replace(/^\/api/, '')
       },
       '/media': {
         target: 'https://gestion-cantine-backend.onrender.com',
         changeOrigin: true,
-      },
-    },
+        rewrite: path => path.replace(/^\/media/, '')
+      }
+    }
   }
 })
