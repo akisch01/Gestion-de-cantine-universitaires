@@ -7,7 +7,7 @@
       "config": {
         "distDir": ".vercel/output/static",
         "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "npm run vercel-build"
+        "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh"
       }
     }
   ],
