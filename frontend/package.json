@@ -7,12 +7,13 @@
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "build": "npx vite build",
-    "vercel-build": "npm install vite @vitejs/plugin-react --save-dev && npm run build"
+    "build": "vite build",
+    "vercel-build": "chmod +x vercel-build.sh && ./vercel-build.sh"
     "postinstall": "patch-package"
   },
   },
   "dependencies": {
+    "vite": "^5.1.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^2.2.3",
