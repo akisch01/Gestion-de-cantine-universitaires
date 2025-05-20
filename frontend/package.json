@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "postinstall": "patch-package",
-    "vercel-build": "./build.sh"
+    "vercel-build": "chmod +x vercel-build.sh && ./vercel-build.sh"
+  },
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
