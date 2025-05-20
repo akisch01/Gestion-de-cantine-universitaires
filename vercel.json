@@ -2,11 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/vite.config.ts",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/dist",
-        "output": "static"
+        "distDir": "public"
       }
     }
   ],
@@ -16,18 +15,14 @@
       "dest": "https://gestion-cantine-backend.onrender.com/api/$1"
     },
     {
-      "src": "/media/(.*)",
-      "dest": "https://gestion-cantine-backend.onrender.com/media/$1"
-    },
-    {
       "src": "/assets/(.*)",
       "headers": {
-        "Cache-Control": "public, max-age=31536000"
+        "Cache-Control": "public, max-age=31536000, immutable"
       }
     },
     {
       "src": "/(.*)",
-      "dest": "/",
+      "dest": "/index.html",
       "status": 200
     }
   ]
