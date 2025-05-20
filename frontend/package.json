@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
     "build": "vite build",
-    "vercel-build": "chmod +x vercel-build.sh && ./vercel-build.sh"
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "vercel-build": "chmod +x vercel-build.sh && ./vercel-build.sh",
     "postinstall": "patch-package"
   },
   },
