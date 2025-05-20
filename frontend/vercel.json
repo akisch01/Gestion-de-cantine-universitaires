@@ -2,12 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
+      "src": "vite.config.ts",
+      "use": "@vercel/vite",
       "config": {
-        "distDir": "dist",
-        "installCommand": "npm install --force",
-        "buildCommand": "npm run vercel-build"
+        "installCommand": "npm install --force"
       }
     }
   ],
