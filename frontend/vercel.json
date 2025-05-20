@@ -2,19 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": ".vercel/output/static",
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh"
+        "distDir": "frontend/dist",
+        "installCommand": "cd frontend && npm install --legacy-peer-deps",
+        "buildCommand": "cd frontend && npm run build"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/frontend/$1"
     }
   ]
 }
