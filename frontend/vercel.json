@@ -5,14 +5,18 @@
       "src": "vite.config.ts",
       "use": "@vercel/vite",
       "config": {
-        "installCommand": "npm install --legacy-peer-deps"
+        "installCommand": "npm install --legacy-peer-deps",
+        "outputDirectory": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/$1",
+      "headers": {
+        "Cache-Control": "s-maxage=3600, stale-while-revalidate=1800"
+      }
     }
   ]
 }
