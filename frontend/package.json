@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "vercel-build": "npm install vite && npm run build",
     "postinstall": "patch-package"
   },
   },
