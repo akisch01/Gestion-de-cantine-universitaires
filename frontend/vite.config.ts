@@ -4,14 +4,15 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // IMPORTANT: laisser absolument '/' pour Vercel
+  base: './', // Changement CRITIQUE ici
   build: {
-    outDir: 'dist',
+    outDir: '../public', // Nouveau dossier à la racine
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     }
   },
