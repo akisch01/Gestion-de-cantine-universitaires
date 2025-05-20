@@ -4,9 +4,13 @@
 echo "Installation des dépendances..."
 npm install --legacy-peer-deps
 
+# Installer Vite globalement
+echo "Installation de Vite..."
+npm install -g vite
+
 # Builder l'application
 echo "Build de l'application..."
-npm run build
+npx vite build
 
 # Créer le dossier de sortie
 echo "Création du dossier de sortie..."
@@ -19,6 +23,7 @@ cp -r public/* .vercel/output/static/ 2>/dev/null || true
 
 # Créer la configuration de déploiement
 echo "Création de la configuration..."
+mkdir -p .vercel/output
 cat > .vercel/output/config.json <<EOF
 {
   "version": 3,
