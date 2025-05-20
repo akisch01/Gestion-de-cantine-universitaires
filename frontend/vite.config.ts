@@ -20,10 +20,17 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist', // Explicitement défini
-    emptyOutDir: true // Vide le dossier avant chaque build
+    outDir: 'dist',
+    emptyOutDir: true,
+    // Important pour le routage SPA
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      }
+    }
   },
-  // Configuration spécifique pour Vercel
+  // Configuration pour Vercel
+  base: '/',
   server: {
     proxy: {
       '/api': {
