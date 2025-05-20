@@ -1,16 +1,16 @@
 #!/bin/bash
 
+# Afficher la version de Node.js
+echo "Node.js version: $(node -v)"
+echo "npm version: $(npm -v)"
+
 # Installer les dépendances
 echo "Installation des dépendances..."
 npm install --legacy-peer-deps
 
-# Installer Vite globalement
-echo "Installation de Vite..."
-npm install -g vite
-
 # Builder l'application
 echo "Build de l'application..."
-npx vite build
+npm run build
 
 # Créer le dossier de sortie
 echo "Création du dossier de sortie..."
