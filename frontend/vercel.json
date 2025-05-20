@@ -2,17 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "vite.config.ts",
-      "use": "@vercel/vite",
+      "src": "package.json",
+      "use": "@vercel/static-build",
       "config": {
-        "installCommand": "npm install --force"
+        "distDir": ".vercel/output/static",
+        "installCommand": "npm install -g pnpm && pnpm install --legacy-peer-deps",
+        "buildCommand": "npm run vercel-build"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/"
     }
   ]
 }
