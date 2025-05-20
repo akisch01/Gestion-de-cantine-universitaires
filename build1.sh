@@ -1,14 +1,20 @@
 #!/bin/bash
 
+# Installation des dépendances
 echo "-> Installation des dépendances..."
 cd frontend
-npm install
+npm install --legacy-peer-deps
 
-echo "-> Compilation TypeScript..."
-npx tsc
+# Build de l'application
+echo "-> Build de l'application..."
+npm run build
 
-echo "-> Build avec Vite..."
-npx vite build
+# Création du dossier de sortie
+echo "-> Préparation des fichiers..."
+mkdir -p dist
 
-echo "-> Démarrage du serveur..."
-npx vite preview --port 4173
+# Copie des fichiers nécessaires
+cp -r dist/* dist/ 2>/dev/null || :
+cp -r public dist/ 2>/dev/null || :
+
+echo "-> Build terminé avec succès !"
