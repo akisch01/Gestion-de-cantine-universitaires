@@ -2,9 +2,9 @@ services:
   - type: web
     name: frontend-cantine
     runtime: node
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: "./frontend/dist"
-    startCommand: cd frontend && npx vite preview --port $PORT --host
+    buildCommand: chmod +x frontend/render-build.sh && ./frontend/render-build.sh
+    staticPublishPath: "./dist"
+    startCommand: npx serve dist -l $PORT
     env: node
     envVars:
       - key: VITE_API_BASE_URL
