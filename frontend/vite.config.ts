@@ -51,6 +51,11 @@ export default defineConfig({
         target: process.env.VITE_API_BASE_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/media': {  // Ajoutez cette section
+        target: process.env.VITE_API_BASE_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/media/, '')
       }
     }
   }
