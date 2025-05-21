@@ -198,3 +198,20 @@ LOGGING = {
         },
     },
 }
+WHITENOISE_ALLOW_ALL_ORIGINS = True
+WHITENOISE_MANIFEST_STRICT = False
+
+# Ajoutez cette configuration en bas du fichier
+if not DEBUG:
+    # Configuration spécifique production
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    
+    # Solution pour servir les fichiers média en production
+    from django.urls import re_path
+    from django.views.static import serve
+    
+    def media_serve(request, path):
+        return serve(request, path, document_root=MEDIA_ROOT)
+    
+    # Ajoutez cette variable globale
+    MEDIA_SERVE_VIEW = media_serve
