@@ -95,7 +95,7 @@ export const useAuth = () => {
 
   const isAuthenticated = !!user;
   const isAdmin = user?.is_staff;
-  const isStudent = user?.is_staff;
+  const isStudent = !user?.is_staff;
 
   return {
     user,
