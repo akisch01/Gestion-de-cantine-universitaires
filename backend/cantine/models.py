@@ -91,28 +91,9 @@ class Reservation(models.Model):
         verbose_name = "Réservation"
         verbose_name_plural = "Réservations"
         ordering = ['-date_reservation']
-        constraints = [
-            models.UniqueConstraint(
-                fields=['etudiant', 'emploi_du_temps'],
-                condition=~models.Q(statut__in=['refuse', 'expire']),
-                name='unique_active_reservation_per_slot'
-            )
-        ]
     
     def clean(self):
         super().clean()
-        # Vérifier si l'utilisateur a déjà une réservation pour ce créneau
-        if not self.pk:  # Nouvelle réservation uniquement
-            existing = Reservation.objects.filter(
-                etudiant=self.etudiant,
-                emploi_du_temps=self.emploi_du_temps,
-                statut__in=['en_attente', 'accepte']
-            ).exists()
-            
-            if existing:
-                raise ValidationError({
-                    'non_field_errors': ['Vous avez déjà une réservation pour ce créneau.']
-                })
 
     def save(self, *args, **kwargs):
         from decimal import Decimal
