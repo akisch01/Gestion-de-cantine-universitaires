@@ -9,7 +9,7 @@
     "preview": "vite preview --port $PORT",
     "serve": "vite preview --port $PORT",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "postinstall": "patch-package"
+    "postinstall": "npx patch-package || echo 'Patch-package non installé, continuation du build'"
   },
   "dependencies": {
     "vite": "^5.1.0",
