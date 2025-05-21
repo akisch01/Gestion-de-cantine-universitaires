@@ -2,12 +2,16 @@ services:
   - type: web
     name: frontend-cantine
     runtime: node
-    buildCommand: chmod +x frontend/render-build.sh && ./frontend/render-build.sh
-    staticPublishPath: "./dist"
-    startCommand: npx serve dist -l $PORT
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: "./dist"  # Note: Chemin relatif à la racine
+    startCommand: cd frontend && npx vite preview --port $PORT --host
     env: node
     envVars:
       - key: VITE_API_BASE_URL
         value: https://gestion-cantine-backend.onrender.com
       - key: PORT
         value: 10000
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /
+    autoDeploy: true
