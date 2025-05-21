@@ -34,14 +34,19 @@ export const authApi = {
     console.log('URL d\'inscription:', API_ENDPOINTS.AUTH.REGISTER);
     
     try {
+      // Supprimer l'entête Authorization pour cette requête
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
       const response = await apiClient.post<User>(API_ENDPOINTS.AUTH.REGISTER, {
         email: data.email,
-        username: data.email,
         password: data.password,
         first_name: data.prenom,
         last_name: data.nom,
         institut: data.institut
-      });
+      }, config);
       console.log('Réponse d\'inscription:', response.data);
       return response.data;
     } catch (error: any) {
