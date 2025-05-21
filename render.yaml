@@ -15,3 +15,10 @@ services:
         value: production
     healthCheckPath: /
     autoDeploy: true
+routes:
+  - type: rewrite
+    source: "/media/(.*)"
+    destination: "https://gestion-cantine-backend.onrender.com/media/$1"
+  - type: rewrite
+    source: "/api/(.*)"
+    destination: "https://gestion-cantine-backend.onrender.com/api/$1"
