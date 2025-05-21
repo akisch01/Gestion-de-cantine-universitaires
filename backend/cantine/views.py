@@ -23,7 +23,7 @@ from .serializers import (
     EmploiDuTempsSerializer, AvisSerializer, NotificationSerializer,
     ParametreSerializer, UserInfoSerializer
 )
-from cantine import serializers
+from backend.cantine import serializers
 
 logger = logging.getLogger(__name__)
 User = get_user_model()
@@ -87,6 +87,7 @@ def get_user_info(request):
         raise
 
 @api_view(['POST'])
+@permission_classes([permissions.AllowAny])
 def register(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
