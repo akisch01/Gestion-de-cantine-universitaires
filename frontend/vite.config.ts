@@ -5,14 +5,18 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   base: '/',
+  preview: {
+    port: 10000,
+    strictPort: true
+  },
   build: {
-    outDir: '../dist',  // Build à la racine du projet
+    outDir: '../dist',
     emptyOutDir: true,
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
+        entryFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     }
   },
